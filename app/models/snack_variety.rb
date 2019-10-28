@@ -1,0 +1,2 @@
+class SnackVariety < ApplicationRecord
+end
