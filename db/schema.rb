@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_28_051347) do
+ActiveRecord::Schema.define(version: 2019_10_28_051650) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bird_colors", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "bird_colors_breeds", force: :cascade do |t|
+    t.bigint "bird_color_id"
+    t.bigint "breed_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bird_color_id"], name: "index_bird_colors_breeds_on_bird_color_id"
+    t.index ["breed_id"], name: "index_bird_colors_breeds_on_breed_id"
+  end
 
   create_table "birds", force: :cascade do |t|
     t.string "name"
@@ -71,6 +86,8 @@ ActiveRecord::Schema.define(version: 2019_10_28_051347) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "bird_colors_breeds", "bird_colors"
+  add_foreign_key "bird_colors_breeds", "breeds"
   add_foreign_key "birds", "breeds"
   add_foreign_key "birds", "users"
   add_foreign_key "cages", "cage_varieties"

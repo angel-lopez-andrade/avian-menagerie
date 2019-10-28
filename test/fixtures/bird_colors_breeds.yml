@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bird_color: one
+  breed: one
+
+two:
+  bird_color: two
+  breed: two
