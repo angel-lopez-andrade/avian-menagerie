@@ -101,7 +101,34 @@ if Snack.count == 0
                 name: snack.capitalize,
                 snack_variety_id: SnackVariety.find_by_name(key.to_s.capitalize).id
             )
-            p "Snack - #{Snack.last.name}, Variety: #{Snack.last.snack_variety_id}"
+            p "Snack - #{Snack.last.name}, Variety: #{SnackVariety.find(Snack.last.snack_variety_id).name}"
+        end
+    end
+end
+
+# CageVariety - Collections of related cages
+cage_varieties = ["Plastic", "Wooden", "Metal"]
+cage_variety_ids = []
+if CageVariety.count == 0
+    for i in 0...cage_varieties.length
+        CageVariety.create(
+            name: cage_varieties[i]
+        )
+        cage_variety_ids.push(CageVariety.last.id)
+        p "CageVariety - #{CageVariety.last.name}"
+    end
+end
+
+# Cage - Individual types of cages within each variety
+cage_sizes = ["small", "medium", "large"]
+if Cage.count == 0
+    for variety in cage_varieties
+        for size in cage_sizes
+            Cage.create(
+                name: "#{size.capitalize} #{variety}",
+                cage_variety_id: CageVariety.find_by_name(variety.capitalize).id
+            )
+            p "Cage - #{Cage.last.name}, Variety: #{CageVariety.find(Cage.last.cage_variety_id).name}"
         end
     end
 end
