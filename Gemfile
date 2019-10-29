@@ -64,3 +64,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "faker", "~> 2.6"
 
 gem "lorem_tolkien", "~> 0.1.1"
+
+gem "aws-sdk-s3", "~> 1.52"
