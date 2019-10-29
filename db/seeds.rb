@@ -31,12 +31,19 @@ end
 # One BirdColorsBreed instance must exist for each Breed instance in order to declare the latters' colors - Hence loop breed_ids.count times (as breed_ids.count = number of Breed's)
 if BirdColorsBreed.count == 0
     for i in 0..breed_ids.length - 1
+        unique_colors = []
         3.times do
+            unique_colors.push(BirdColor.find(rand(1..bird_color_ids.length)).id)
+        end
+        unique_colors = unique_colors.uniq
+        p unique_colors
+        x = 0
+        unique_colors.length.times do
             BirdColorsBreed.create(
-                bird_color_id: BirdColor.find(rand(1..bird_color_ids.length)).id,# set to a bird_color_id that doesn't already exist, or delete after?
+                bird_color_id: unique_colors[x],
                 breed_id: Breed.find(breed_ids[i]).id
             )
-#loop through 'something' in Breed.find(?).bird_colors to find bird_colors.find(i).name's that aren't the last occurence within Breed.find(i).bird_colors
+            x += 1
             p "BirdColorsBreed - BID: #{BirdColorsBreed.last.breed_id}, BCID: #{BirdColorsBreed.last.bird_color_id}"
         end
     end
