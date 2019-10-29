@@ -1,4 +1,5 @@
 # Note - array-counting from 0 but postgresql id initialization from 1
+
 # BirdColor - All possible colors that a bird species can be - Cannot be edited by users
 colors = ["Brown", "Grey", "Red", "Black", "White", "Blue", "Orange", "Green", "Yellow", "Purple"]
 bird_color_ids = []
@@ -26,14 +27,17 @@ if Breed.count == 0
 end
 
 # BirdColorsBreed - Defines the relationship between bird colors and bird breeds - each breed can have 1-3 occuring colors
-# Pick 1-3 random colors from Birdcolor data to attach to an existing Breed
+# Pick 3 random colors from Birdcolor data to attach to an existing Breed, then go back and remove any duplicate colors
 # One BirdColorsBreed instance must exist for each Breed instance in order to declare the latters' colors - Hence loop breed_ids.count times (as breed_ids.count = number of Breed's)
 if BirdColorsBreed.count == 0
     for i in 0..breed_ids.length - 1
-        BirdColorsBreed.create(
-            bird_color_id: BirdColor.find(rand(1..bird_color_ids.length)).id,
-            breed_id: Breed.find(breed_ids[i]).id
-        )
-        p "BirdColorsBreed - #{BirdColorsBreed.last.bird_color_id}, #{BirdColorsBreed.last.breed_id}"
+        3.times do
+            BirdColorsBreed.create(
+                bird_color_id: BirdColor.find(rand(1..bird_color_ids.length)).id,# set to a bird_color_id that doesn't already exist, or delete after?
+                breed_id: Breed.find(breed_ids[i]).id
+            )
+#loop through 'something' in Breed.find(?).bird_colors to find bird_colors.find(i).name's that aren't the last occurence within Breed.find(i).bird_colors
+            p "BirdColorsBreed - BID: #{BirdColorsBreed.last.breed_id}, BCID: #{BirdColorsBreed.last.bird_color_id}"
+        end
     end
 end
