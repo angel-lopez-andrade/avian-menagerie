@@ -1,4 +1,5 @@
 # Note - array-counting from 0 but postgresql id initialization from 1
+# Note - :references columns mandatory
 
 # BirdColor - All possible colors that a bird species can be - Cannot be edited by users
 colors = ["Brown", "Grey", "Red", "Black", "White", "Blue", "Orange", "Green", "Yellow", "Purple"]
@@ -55,7 +56,7 @@ User.create(
     email: "admin@test.com"
 )
 
-# Birds - Individual named birds, each belonging to a breed (however, seeded birds do not belong to any user - thus no user_id declaration)
+# Bird - Individual named birds, each belonging to a breed (however, seeded birds do not belong to any user - thus no user_id declaration)
 if Bird.count == 0
     for i in 1..25
         breed_id = breed_ids.sample
@@ -70,5 +71,37 @@ if Bird.count == 0
             user_id: 1
         )
         p "Bird - #{Bird.last.name}, #{Bird.last.age} years, $#{Bird.last.price / 100.0}, Breed: #{Bird.last.breed.name}, Color: #{Bird.last.color}"
+    end
+end
+
+# SnackVariety - Collections of related snacks
+snack_varieties = ["Seeds", "Fruits", "Insects", "Vegetations"]
+snack_variety_ids = []
+if SnackVariety.count == 0
+    for i in 0...snack_varieties.length
+        SnackVariety.create(
+            name: snack_varieties[i]
+        )
+        snack_variety_ids.push(SnackVariety.last.id)
+        p "SnackVariety - #{SnackVariety.last.name}"
+    end
+end
+
+# Snack - Individual types of snacks within each variety
+snacks = {
+    seeds: ["sunflower", "pumpkin", "millet", "thistle", "sorghum", "flax"],
+    fruits: ["apple", "grape", "pear", "orange", "cherry", "plum", "melon", "strawberry"],
+    insects: ["earthworm", "ant", "budworm", "fly", "mosquito", "caterpillar"],
+    vegetations: ["grass", "moss", "nectar", "lichen", "tree sap", "leaves"]
+}
+if Snack.count == 0
+    snacks.each do |key, value|
+        for snack in snacks[key]
+            Snack.create(
+                name: snack.capitalize,
+                snack_variety_id: SnackVariety.find_by_name(key.to_s.capitalize).id
+            )
+            p "Snack - #{Snack.last.name}, Variety: #{Snack.last.snack_variety_id}"
+        end
     end
 end
