@@ -22,10 +22,8 @@ if Breed.count == 0
         b = Breed.create(
             name: breed_names[i]
         )
-        # not appearing in s3
-        temp_img_variable = Down.download(Faker::LoremPixel.image + "?random=" + rand(1..1000).to_s)
+        temp_img_variable = Down.download(HTTParty.get("http://shibe.online/api/birds").parsed_response[0])
         b.pic.attach(io: temp_img_variable, filename: File.basename(temp_img_variable.path))
-        
         breed_ids.push(b.id)
         p "Breed - #{b.name}"
     end
