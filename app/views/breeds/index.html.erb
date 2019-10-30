@@ -2,4 +2,5 @@
 <p><%= params %></p>
 <% for breed in @breeds %>
     <p><%= breed.name %></p>
+    <p><%= image_tag breed.pic if breed.pic.attached? %></p>
 <% end %>

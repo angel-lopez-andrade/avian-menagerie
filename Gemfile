@@ -68,3 +68,5 @@ gem "lorem_tolkien", "~> 0.1.1"
 gem "aws-sdk-s3", "~> 1.52"
 
 gem "devise", "~> 4.7"
+
+gem "down", "~> 5.0"
