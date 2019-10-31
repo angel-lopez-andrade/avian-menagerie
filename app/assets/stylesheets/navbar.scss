@@ -1,25 +1,41 @@
 #navbar{
-    #navbar-body{
-        color: red;
-        margin: 0;
-    }
-
     ul{
-        border: 1px solid blue;
-        display: flex;
-        width: 100%;
-        flex-direction: row;
-        padding: 0;
         position: fixed;
-        height: 4vh;
+        top: 0;
         margin-top: 0;
-        margin-right: 25px;
+        padding: 0;
+        width: 100%;
+        display: flex;
         justify-content: space-around;
+        background: grey;
+        height: 70px;
     }
 
     li{
+        display: flex;
+        flex-direction: column;
         list-style-type: none;
-        width: 33%;
         border: 1px solid black;
+        overflow: hidden;
+        justify-content: center;
+        text-align: center;
+    }
+
+    li p{
+        display: inline-block;
+    }
+
+    #icon-menu{
+        max-width: 70px;
+        flex-grow: 1;
+    }
+
+    #logo{
+        flex-grow: 1;
+    }
+
+    #logout{
+        max-width: 70px;
+        flex-grow: 1;
     }
 }
