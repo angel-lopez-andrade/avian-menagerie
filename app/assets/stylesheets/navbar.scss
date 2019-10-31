@@ -1,0 +1,25 @@
+#navbar{
+    #navbar-body{
+        color: red;
+        margin: 0;
+    }
+
+    ul{
+        border: 1px solid blue;
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        padding: 0;
+        position: fixed;
+        height: 4vh;
+        margin-top: 0;
+        margin-right: 25px;
+        justify-content: space-around;
+    }
+
+    li{
+        list-style-type: none;
+        width: 33%;
+        border: 1px solid black;
+    }
+}

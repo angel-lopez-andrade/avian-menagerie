@@ -15,6 +15,7 @@ if BirdColor.count == 0
 end
 
 # Breed - Breeds of bird - Can be added to by users
+# Picture attached
 breed_names = ["Budgey", "Cockatoo", "Parrot", "Owl", "Penguin", "Pidgeon", "Seagull", "Ostrich", "Falcon", "Goose", "Crow", "Woodpecker", "Cormorant", "Swan", "Stork"]
 breed_ids = []
 if Breed.count == 0
@@ -52,6 +53,7 @@ if BirdColorsBreed.count == 0
 end
 
 # User - Initialize admin user (all seeded Birds belong to admin user - id: 1) (Breeds are not allocated a user, despite being creatable)
+# Picture attached (to be)
 User.create(
     username: "admin",
     password: "test123",
@@ -59,11 +61,12 @@ User.create(
 )
 
 # Bird - Individual named birds, each belonging to a breed (however, seeded birds do not belong to any user - thus no user_id declaration)
+# Picture attached
 if Bird.count == 0
     for i in 1..25
         breed_id = breed_ids.sample
         breed_colors = Breed.find(breed_id).bird_colors
-        Bird.create(
+        b = Bird.create(
             name: Faker::Creature::Horse.name,
             age: rand(3..15),
             price: rand(5000..100000),
@@ -72,6 +75,8 @@ if Bird.count == 0
             breed_id: breed_id,
             user_id: 1
         )
+        temp_img_variable = Down.download(HTTParty.get("http://shibe.online/api/birds").parsed_response[0])
+        b.pic.attach(io: temp_img_variable, filename: File.basename(temp_img_variable.path))
         p "Bird - #{Bird.last.name}, #{Bird.last.age} years, $#{Bird.last.price / 100.0}, Breed: #{Bird.last.breed.name}, Color: #{Bird.last.color}"
     end
 end
@@ -90,6 +95,7 @@ if SnackVariety.count == 0
 end
 
 # Snack - Individual types of snacks within each variety
+# Picture attached (to be)
 snacks = {
     seeds: ["sunflower", "pumpkin", "millet", "thistle", "sorghum", "flax"],
     fruits: ["apple", "grape", "pear", "orange", "cherry", "plum", "melon", "strawberry"],
@@ -122,6 +128,7 @@ if CageVariety.count == 0
 end
 
 # Cage - Individual types of cages within each variety
+# Picture attached (to be)
 cage_sizes = ["small", "medium", "large"]
 if Cage.count == 0
     for variety in cage_varieties
