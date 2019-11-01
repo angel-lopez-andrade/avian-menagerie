@@ -1,3 +1,11 @@
 #birds-index {
-    
+    .bird-listing {
+        text-align: center;
+        padding-bottom: 40px;
+        margin-bottom: 90px;
+        border-bottom: 1px solid black;
+        img {
+            border: 2px solid black;
+        }
+    }
 }

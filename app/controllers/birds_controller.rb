@@ -1,5 +1,5 @@
 class BirdsController < ApplicationController
-    before_action :setup_birds, :setup_breed_name
+    before_action :setup_birds, :setup_breed_name, only: :index
     before_action :setup_bird, only: :show
 
     def index

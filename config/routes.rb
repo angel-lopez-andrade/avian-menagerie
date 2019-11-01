@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+  # Devise - Check default Devise routes with 'rails routes' (terminal) and default Devise views at app/views/devise
   devise_for :users
+
   # Homepage
   get "/", to: "pages#home", as: "root"
 

@@ -1,4 +1,4 @@
-class ForumsController
+class ForumsController < ApplicationController
     def show
     end
 

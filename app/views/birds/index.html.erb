@@ -1,12 +1,15 @@
 <%= render "/shared/navbar" %>
 <section id="birds-index">
     <% if @birds.empty? %>
-        <h1>There are currently no birds of the <%= Breed.find(params[:breed_id]).name %> Breed for sale.</h1>
+        <h1>There are currently no birds of the <%= @breed_name %> Breed for sale.</h1>
     <% else %>
         <h1>All <%= @breed_name %>'s</h1>
     <% end %>
+    <h1><%= link_to("#{@breed_name} - Breed Forum", forum_path(params[:breed_id])) %></h1>
     <% for bird in @birds %>
-        <p><%= link_to(image_tag(bird.pic), bird_path(params[:breed_id], bird.id)) if bird.pic.attached? %></p>
-        <h2 class="subtitle"><%= link_to(bird.name, bird_path(params[:breed_id], bird.id)) %></h2>   
+        <div class="bird-listing">
+            <p><%= link_to(image_tag(bird.pic), bird_path(params[:breed_id], bird.id)) if bird.pic.attached? %></p>
+            <h2 class="subtitle"><%= link_to(bird.name, bird_path(params[:breed_id], bird.id)) %></h2>   
+        </div>
     <% end %>
 </section>
