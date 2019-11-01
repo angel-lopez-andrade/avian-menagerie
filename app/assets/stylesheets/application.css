@@ -28,3 +28,7 @@ a {
         color: black;
     }
 }
+
+.subtitle {
+    text-decoration: underline;
+}

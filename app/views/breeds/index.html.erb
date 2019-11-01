@@ -6,8 +6,8 @@
     </div>
     <% for breed in @breeds %>
         <div class="breed-listing">
-            <p><%= link_to(breed.name, birds_path(breed.id)) %></p>
             <p><%= link_to(image_tag(breed.pic), birds_path(breed.id)) if breed.pic.attached? %></p>
+            <h2 class="subtitle"><%= link_to(breed.name, birds_path(breed.id)) %></h2>
         </div>
     <% end %>
 </section>

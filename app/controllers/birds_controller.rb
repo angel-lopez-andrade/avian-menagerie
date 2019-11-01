@@ -1,5 +1,6 @@
 class BirdsController < ApplicationController
     before_action :setup_birds, :setup_breed_name
+    before_action :setup_bird, only: :show
 
     def index
     end
@@ -30,5 +31,9 @@ class BirdsController < ApplicationController
 
     def setup_breed_name
         @breed_name = Breed.find(params[:breed_id]).name
+    end
+
+    def setup_bird
+        @bird = Breed.find(params[:breed_id]).birds.find(params[:bird_id])
     end
 end
