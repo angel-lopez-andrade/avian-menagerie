@@ -1,7 +1,14 @@
 <%= render "/shared/navbar" %>
-<h1>All Breeds</h1>
-<p><%= params %></p>
-<% for breed in @breeds %>
-    <p><%= breed.name %></p>
-    <p><%= image_tag breed.pic if breed.pic.attached? %></p>
-<% end %>
+<section id="breeds-index">
+    <h1>All Breeds</h1>
+    <div id="bird-actions">
+        <p><%= link_to("Add a Bird Listing", new_bird_path) %></p>
+        <p><%= link_to("Record a New Breed", new_breed_path) %></p>
+    </div>
+    <% for breed in @breeds %>
+        <div class="breed-listing">
+            <p><%= breed.name %></p>
+            <p><%= image_tag breed.pic if breed.pic.attached? %></p>
+        </div>
+    <% end %>
+</section>

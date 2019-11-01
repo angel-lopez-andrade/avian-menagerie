@@ -1,0 +1,27 @@
+#breeds-index {
+    #bird-actions {
+        display: flex;
+        justify-content: space-around;
+        padding-top: 10px;
+        p {
+            font-size: 2rem;
+            padding: 10px;
+            border: 1px solid black;
+            font-weight: bold;
+        }
+    }
+
+    .breed-listing {
+        text-align: center;
+        text-decoration: underline;
+        padding-bottom: 40px;
+        margin-bottom: 90px;
+        border-bottom: 1px solid black;
+        p:nth-child(1) {
+            font-size: 2rem;
+        }
+        img {
+            border: 2px solid black;
+        }
+    }
+}
