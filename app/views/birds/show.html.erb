@@ -1,2 +1,19 @@
 <%= render "/shared/navbar" %>
-<h1><%= @bird.name %></h1>
+<h1><%= @bird.breed.name %></h1>
+<% if current_user.id == @bird.user.id %>
+    <h1>Edit</h1>
+    <h1>Delete</h1>
+<% end %>
+<div>
+    <p><%= image_tag(@bird.pic) if @bird.pic.attached? %></p>
+    <div>
+        <h2><%= @bird.name %></h2>
+        <p><%= link_to("Purchase: #{@dollar_price}", "") %></p>
+    </div>
+    <div>
+        <p>Age: <%= @bird.age %></p>
+        <p>Color: <%= @bird.color %></p>
+        <p>Description: <%= @bird.description %></p>
+        <p>Seller: <%= @bird.user.username %></p>
+    </div>
+</div>

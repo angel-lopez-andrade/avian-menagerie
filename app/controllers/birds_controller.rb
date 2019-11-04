@@ -1,11 +1,13 @@
 class BirdsController < ApplicationController
     before_action :setup_birds, :setup_breed_name, only: :index
-    before_action :setup_bird, only: :show
+    before_action :setup_bird, :setup_dollar_price, only: :show
 
     def index
     end
 
     def new
+        @breed = Breed.new
+        @bird = Bird.new
     end
 
     def create
@@ -35,5 +37,9 @@ class BirdsController < ApplicationController
 
     def setup_bird
         @bird = Breed.find(params[:breed_id]).birds.find(params[:bird_id])
+    end
+
+    def setup_dollar_price
+        @dollar_price = "$ #{@bird.price / 100.0}"
     end
 end

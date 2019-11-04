@@ -1,2 +1,7 @@
 <%= render "/shared/navbar" %>
-<h1>Create a new Bird Listing</h1>
+<h1>Add a new Bird Listing</h1>
+<%= form_with url: "/breeds/birds", method: :post, local: true do |form| %>
+    <%= form.label :name, "Name: " %>
+    <%= form.text_field :name %>
+    <%= form.submit value: "Submit" %>
+<% end %>

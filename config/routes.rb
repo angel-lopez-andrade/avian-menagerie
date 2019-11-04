@@ -19,9 +19,9 @@ Rails.application.routes.draw do
   post "/breeds/:breed_id/forum", to: "forums#new", as: "new_post"
 
   # Birds
-  get "/breeds/:breed_id/birds", to: "birds#index", as: "birds"
   get "/birds/new", to: "birds#new", as: "new_bird"
-  post "/breeds/:breed_id/birds", to: "birds#create"
+  get "/breeds/:breed_id/birds", to: "birds#index", as: "birds"
+  post "/breeds/birds", to: "birds#create"
   get "/breeds/:breed_id/birds/:bird_id", to: "birds#show", as: "bird"
   get "/breeds/:breed_id/birds/:bird_id/edit", to: "birds#edit", as: "edit_bird"
   patch "breeds/:breed_id/birds", to: "birds#update"

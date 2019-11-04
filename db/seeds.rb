@@ -53,12 +53,13 @@ if BirdColorsBreed.count == 0
 end
 
 # User - Initialize admin user (all seeded Birds belong to admin user - id: 1) (Breeds are not allocated a user, despite being creatable)
-# Picture attached (to be)
-User.create(
+# username field only for admin - all other users have email only
+# Picture attached
+u = User.create(
     username: "admin",
-    password: "test123",
-    email: "admin@test.com"
+    email: "admin@site.com"
 )
+u.pic.attach(io: File.open("app/assets/images/admin_user_icon.png"), filename: "admin_icon.png")
 
 # Bird - Individual named birds, each belonging to a breed (however, seeded birds do not belong to any user - thus no user_id declaration)
 # Picture attached
