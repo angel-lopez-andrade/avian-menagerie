@@ -1,6 +1,6 @@
 <%= render "/shared/navbar" %>
 <h1>Add a new Bird Listing</h1>
-<%= form_with url: "/breeds/birds", method: :post, local: true do |form| %>
+<%= form_with model: @bird, url: "/breeds/birds", method: :post, local: true do |form| %>
     <p>
         <%= form.label :name, "Name: " %>
         <%= form.text_field :name %>
@@ -18,22 +18,20 @@
 
     <p>
         <%= form.label :color, "Color: " %>
-        <%= collection_radio_buttons(:post, :color, @bird_colors, :name, :name) %>
-        <!-- receives as post[]... -->
+        <%= form.collection_radio_buttons(:color, @bird_colors, :name, :name) %>
     </p>
 
     <p>
         <%= form.label :price, "Price: " %>
-        <%= form.number_field :price, min: 50, max: 1000%>
-        <!-- how to insert $ and convert to cents when sending? -->
+        <%= form.number_field :price, min: 50, max: 1000, placeholder: "$" %>
     </p>
     
-    <p><!-- text area -->
+    <p>
         <%= form.label :description, "Description: " %>
-        <%= text_area :post, :body, cols: 35, rows: 8 %>
+        <%= form.text_area :description, cols: 35, rows: 8 %>
     </p>
 
-    <p><!-- attachment -->
+    <p>
         <%= form.label :pic, "Picture (PNG/JPG/JPEG): " %>
         <%= form.file_field :pic, accept: "image/png,image/jpg,image/jpeg" %>
     </p>
