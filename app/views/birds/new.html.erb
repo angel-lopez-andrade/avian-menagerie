@@ -1,7 +1,44 @@
 <%= render "/shared/navbar" %>
 <h1>Add a new Bird Listing</h1>
 <%= form_with url: "/breeds/birds", method: :post, local: true do |form| %>
-    <%= form.label :name, "Name: " %>
-    <%= form.text_field :name %>
-    <%= form.submit value: "Submit" %>
+    <p>
+        <%= form.label :name, "Name: " %>
+        <%= form.text_field :name %>
+    </p>
+
+    <p>
+        <%= form.label :breed_id, "Breed: " %>
+        <%= form.select :breed_id, @breeds.collect {|breed| [ breed.name, breed.id ] } %>
+    </p>
+
+    <p>
+        <%= form.label :age, "Age: " %>
+        <%= form.number_field :age, min: 1, max: 15 %>
+    </p>
+
+    <p>
+        <%= form.label :color, "Color: " %>
+        <%= collection_radio_buttons(:post, :color, @bird_colors, :name, :name) %>
+        <!-- receives as post[]... -->
+    </p>
+
+    <p>
+        <%= form.label :price, "Price: " %>
+        <%= form.number_field :price, min: 50, max: 1000%>
+        <!-- how to insert $ and convert to cents when sending? -->
+    </p>
+    
+    <p><!-- text area -->
+        <%= form.label :description, "Description: " %>
+        <%= text_area :post, :body, cols: 35, rows: 8 %>
+    </p>
+
+    <p><!-- attachment -->
+        <%= form.label :pic, "Picture (PNG/JPG/JPEG): " %>
+        <%= form.file_field :pic, accept: "image/png,image/jpg,image/jpeg" %>
+    </p>
+
+    <p>
+        <%= form.submit value: "Submit Listing" %>
+    </p>
 <% end %>
