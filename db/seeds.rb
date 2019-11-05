@@ -113,6 +113,7 @@ if Snack.count == 0
             s = Snack.create(
                 name: snack.capitalize,
                 price: rand(500..2000),
+                description: Faker::Lorem.sentence,
                 snack_variety_id: SnackVariety.find_by_name(key.to_s.capitalize).id
             )
             case key
@@ -153,6 +154,7 @@ if Cage.count == 0
             c = Cage.create(
                 name: "#{size.capitalize} #{variety}",
                 price: rand(3000..40000),
+                description: Faker::Lorem.sentence,
                 cage_variety_id: CageVariety.find_by_name(variety.capitalize).id
             )
             temp_img_variable = Down.download("https://loremflickr.com/320/240/birdcage")

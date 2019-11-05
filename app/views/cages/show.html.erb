@@ -1,1 +1,7 @@
 <%= render "/shared/navbar" %>
+<p><%= image_tag @cage.pic if @cage.pic.attached? %></p>
+<ul>
+    <li><%= @cage.name %></li>
+    <li>Buy: <%= @price %></li>
+</ul>
+<p><%= @cage.description %></p>

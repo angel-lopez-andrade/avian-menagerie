@@ -29,10 +29,10 @@ Rails.application.routes.draw do
   delete "/breeds/:breed_id/birds", to: "birds#destroy"#
 
   # Snacks
-  get "/snacks", to: "snacks#index", as: "snacks"#
-  get "/snacks/:id", to: "snacks#show", as: "snack"#
+  get "/snacks", to: "snacks#index", as: "snacks"
+  get "/snacks/:id", to: "snacks#show", as: "snack"
 
   # Cages
-  get "/cages", to: "cages#index", as: "cages"#
-  get "/cages/:id", to: "cages#show", as: "cage"#
+  get "/cages", to: "cages#index", as: "cages"
+  get "/cages/:id", to: "cages#show", as: "cage"
 end

@@ -1,1 +1,14 @@
 <%= render "/shared/navbar" %>
+<% for cage_variety in @cage_varieties %>
+    <div class="cage_variety_section">
+        <h1><%= cage_variety.name %></h1>
+        <ul>
+            <% for cage in @cages.where(cage_variety_id: cage_variety.id) %>
+                <li>
+                    <h2 class="subtitle"><%= link_to(cage.name, cage_path(cage.id)) %></h2>
+                    <p><%= link_to(image_tag(cage.pic), cage_path(cage.id) ) %></p>
+                </li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
