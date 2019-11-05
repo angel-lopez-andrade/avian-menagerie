@@ -6,6 +6,6 @@ class SnacksController < ApplicationController
 
     def show
         @snack = Snack.find(params[:id])
-        @price = "$#{Snack.find(params[:id]).price / 100.0}"
+        @price = "$#{Snack.find(params[:id]).price / 100.00}"
     end
 end

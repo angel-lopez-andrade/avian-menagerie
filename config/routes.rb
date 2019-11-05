@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   # Pages
   get "/welcome", to: "pages#home", as: "welcome"
-  get "/about", to: "pages#about", as: "about"#
+  get "/about", to: "pages#about", as: "about"
 
   # Breeds
   get "/breeds", to: "breeds#index", as: "breeds"
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   post "/breeds/birds", to: "birds#create"
   get "/breeds/:breed_id/birds/:bird_id", to: "birds#show", as: "bird"
   get "/breeds/:breed_id/birds/:bird_id/edit", to: "birds#edit", as: "edit_bird"#
-  patch "breeds/:breed_id/birds", to: "birds#update"#
+  patch "breeds/birds", to: "birds#update"#
   # (Chuck in a delete confirmation window via the view)
   delete "/breeds/:breed_id/birds", to: "birds#destroy"#
 

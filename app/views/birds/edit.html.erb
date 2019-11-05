@@ -1,2 +1,29 @@
 <%= render "/shared/navbar" %>
-<h1>Edit a Bird</h1>
+<h1>Edit <%= @bird.name %></h1>
+<%= form_with model: @bird, url: "/breeds/birds", method: :patch, local: true do |form| %>
+    <p>
+        <%= form.label :age, "Age: " %>
+        <%= form.number_field :age, min: 1, max: 15 %>
+    </p>
+    <p>
+        <%= form.label :color, "Color: " %>
+        <%= form.collection_radio_buttons(:color, @bird_colors, :name, :name) %>
+    </p>
+    <p>
+        <%= form.label :price, "Price: " %>
+        <%= form.number_field :price, min: 50, max: 1000, placeholder: "$" %>
+    </p>
+    <p>
+        <%= form.label :description, "Description: " %>
+        <%= form.text_area :description, cols: 35, rows: 8 %>
+    </p>
+    <p>
+        <%= form.label :pic, "Picture (PNG/JPG/JPEG): " %>
+        <%= form.file_field :pic, accept: "image/png,image/jpg,image/jpeg" %>
+    </p>
+    <%= form.hidden_field :breed_id %>
+    <%= form.hidden_field :id %>
+    <p>
+        <%= form.submit value: "Submit Listing" %>
+    </p>
+<% end %>

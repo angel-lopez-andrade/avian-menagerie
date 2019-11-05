@@ -29,9 +29,22 @@ class BirdsController < ApplicationController
     end
 
     def edit
+        @bird = Bird.find(params[:bird_id])
+        @breeds = Breed.all
+        @bird_colors = BirdColor.all
     end
 
     def update
+        @bird = Bird.find(params[:bird][:id])
+        if @bird.update(setup_whitelisted_params)
+            @bird.price *= 100
+            redirect_to breeds_path
+        else
+            @bird = Bird.find(params[:bird_id])
+            @breeds = Breed.all
+            @bird_colors = BirdColor.all
+            render action: "edit"
+        end
     end
 
     def destroy
@@ -53,10 +66,10 @@ class BirdsController < ApplicationController
     end
 
     def setup_dollar_price
-        @dollar_price = "$ #{@bird.price / 100.0}"
+        @dollar_price = "$ #{@bird.price / 100.00}"
     end
 
     def setup_whitelisted_params
-        whitelisted_params = params.require(:bird).permit(:name, :breed_id, :age, :color, :price, :description, :pic)
+        whitelisted_params = params.require(:bird).permit(:id, :name, :breed_id, :user_id, :age, :color, :price, :description, :pic)
     end
 end

@@ -82,7 +82,7 @@ if Bird.count == 0
         )
         temp_img_variable = Down.download(HTTParty.get("http://shibe.online/api/birds").parsed_response[0])
         b.pic.attach(io: temp_img_variable, filename: File.basename(temp_img_variable.path))
-        p "Bird - #{b.name}, #{b.age} years, $#{b.price / 100.0}, Breed: #{b.breed.name}, Color: #{b.color}"
+        p "Bird - #{b.name}, #{b.age} years, $#{b.price / 100.00}, Breed: #{b.breed.name}, Color: #{b.color}"
     end
 end
 
