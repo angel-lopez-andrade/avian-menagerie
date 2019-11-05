@@ -13,16 +13,16 @@ class BirdsController < ApplicationController
 
     def create
         @bird = Bird.new(setup_whitelisted_params)
-        #calling method directly rather than having it be setup before_action
+        # calling method directly rather than having it be setup before_action
         @bird.price *= 100
-        #price conversions in create controller
+        # price conversions in create controller
         @bird.user_id = current_user.id
         if @bird.save
             redirect_to bird_path(@bird.breed_id, @bird.id)
         else
             redirect_to new_bird_path
         end
-        #non get methods need manual redirect
+        # non-GET methods need manual redirection
     end
 
     def show
@@ -48,6 +48,8 @@ class BirdsController < ApplicationController
     end
 
     def destroy
+        Bird.find(params[:id]).destroy
+        redirect_to birds_path(params[:breed_id])
     end
 
     private

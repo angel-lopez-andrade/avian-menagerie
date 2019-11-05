@@ -2,7 +2,7 @@
 <h1><%= @bird.breed.name %></h1>
 <% if current_user.id == @bird.user.id %>
     <h1><%= link_to("Edit", edit_bird_path) %></h1>
-    <h1><%= link_to("Delete", ) %></h1>
+    <h1><%= link_to("Delete", "#{birds_path(@bird.breed_id)}?id=#{@bird.id}", data: {confirm: "Are you sure?"}, method: :delete) %></h1>
 <% end %>
 <div>
     <p><%= image_tag(@bird.pic) if @bird.pic.attached? %></p>

@@ -11,8 +11,8 @@ Rails.application.routes.draw do
 
   # Breeds
   get "/breeds", to: "breeds#index", as: "breeds"
-  get "/breeds/new", to: "breeds#new", as: "new_breed"#
-  post "/breeds", to: "breeds#create"#
+  get "/breeds/new", to: "breeds#new", as: "new_breed"
+  post "/breeds", to: "breeds#create"
 
   # Forums
   get "/breeds/:breed_id/forum", to: "forums#show", as: "forum"#
