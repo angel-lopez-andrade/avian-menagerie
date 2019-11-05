@@ -55,11 +55,15 @@ end
 # User - Initialize admin user (all seeded Birds belong to admin user - id: 1) (Breeds are not allocated a user, despite being creatable)
 # username field only for admin - all other users have email only
 # Picture attached
-u = User.create(
-    username: "admin",
-    email: "admin@site.com"
-)
-u.pic.attach(io: File.open("app/assets/images/admin_user_icon.png"), filename: "admin_icon.png")
+if User.count == 0
+    u = User.create(
+        username: "admin",
+        email: "admin@site.com",
+        password: "admin123"
+    )
+    u.pic.attach(io: File.open("app/assets/images/admin_user_icon.png"), filename: "admin_icon.png")
+    p "User - Admin"
+end
 
 # Bird - Individual named birds, each belonging to a breed (however, seeded birds do not belong to any user - thus no user_id declaration)
 # Picture attached
@@ -78,7 +82,7 @@ if Bird.count == 0
         )
         temp_img_variable = Down.download(HTTParty.get("http://shibe.online/api/birds").parsed_response[0])
         b.pic.attach(io: temp_img_variable, filename: File.basename(temp_img_variable.path))
-        p "Bird - #{Bird.last.name}, #{Bird.last.age} years, $#{Bird.last.price / 100.0}, Breed: #{Bird.last.breed.name}, Color: #{Bird.last.color}"
+        p "Bird - #{b.name}, #{b.age} years, $#{b.price / 100.0}, Breed: #{b.breed.name}, Color: #{b.color}"
     end
 end
 
@@ -106,10 +110,21 @@ snacks = {
 if Snack.count == 0
     snacks.each do |key, value|
         for snack in snacks[key]
-            Snack.create(
+            s = Snack.create(
                 name: snack.capitalize,
                 snack_variety_id: SnackVariety.find_by_name(key.to_s.capitalize).id
             )
+            case key
+            when :seeds
+                temp_img_variable = Down.download("https://loremflickr.com/320/240/seed")
+            when :fruits
+                temp_img_variable = Down.download("https://loremflickr.com/320/240/fruit")
+            when :insects
+                temp_img_variable = Down.download("https://loremflickr.com/320/240/insect")
+            when :vegetations
+                temp_img_variable = Down.download("https://loremflickr.com/320/240/vegetation")
+            end
+            s.pic.attach(io: temp_img_variable, filename: File.basename(temp_img_variable.path))
             p "Snack - #{Snack.last.name}, Variety: #{SnackVariety.find(Snack.last.snack_variety_id).name}"
         end
     end
@@ -134,10 +149,12 @@ cage_sizes = ["small", "medium", "large"]
 if Cage.count == 0
     for variety in cage_varieties
         for size in cage_sizes
-            Cage.create(
+            c = Cage.create(
                 name: "#{size.capitalize} #{variety}",
                 cage_variety_id: CageVariety.find_by_name(variety.capitalize).id
             )
+            temp_img_variable = Down.download("https://loremflickr.com/320/240/birdcage")
+            c.pic.attach(io: temp_img_variable, filename: File.basename(temp_img_variable.path))
             p "Cage - #{Cage.last.name}, Variety: #{CageVariety.find(Cage.last.cage_variety_id).name}"
         end
     end

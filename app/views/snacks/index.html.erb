@@ -1,1 +1,14 @@
 <%= render "/shared/navbar" %>
+<% for snack_variety in @snack_varieties %>
+    <div class="snack_variety_section">
+        <h1><%= snack_variety.name %></h1>
+        <ul>
+            <% for snack in @snacks.where(snack_variety_id: snack_variety.id) %>
+                <li>
+                    <h2 class="subtitle"><%= link_to(snack.name, snack_path(snack.id)) %></h2>
+                    <p><%= link_to(image_tag(snack.pic), snack_path(snack.id) ) %></p>
+                </li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>

@@ -7,32 +7,32 @@ Rails.application.routes.draw do
 
   # Pages
   get "/welcome", to: "pages#home", as: "welcome"
-  get "/about", to: "pages#about", as: "about"
+  get "/about", to: "pages#about", as: "about"#
 
   # Breeds
   get "/breeds", to: "breeds#index", as: "breeds"
-  get "/breeds/new", to: "breeds#new", as: "new_breed"
-  post "/breeds", to: "breeds#create"
+  get "/breeds/new", to: "breeds#new", as: "new_breed"#
+  post "/breeds", to: "breeds#create"#
 
   # Forums
-  get "/breeds/:breed_id/forum", to: "forums#show", as: "forum"
-  post "/breeds/:breed_id/forum", to: "forums#new", as: "new_post"
+  get "/breeds/:breed_id/forum", to: "forums#show", as: "forum"#
+  post "/breeds/:breed_id/forum", to: "forums#new", as: "new_post"#
 
   # Birds
   get "/birds/new", to: "birds#new", as: "new_bird"
   get "/breeds/:breed_id/birds", to: "birds#index", as: "birds"
   post "/breeds/birds", to: "birds#create"
   get "/breeds/:breed_id/birds/:bird_id", to: "birds#show", as: "bird"
-  get "/breeds/:breed_id/birds/:bird_id/edit", to: "birds#edit", as: "edit_bird"
-  patch "breeds/:breed_id/birds", to: "birds#update"
+  get "/breeds/:breed_id/birds/:bird_id/edit", to: "birds#edit", as: "edit_bird"#
+  patch "breeds/:breed_id/birds", to: "birds#update"#
   # (Chuck in a delete confirmation window via the view)
-  delete "/breeds/:breed_id/birds", to: "birds#destroy"
+  delete "/breeds/:breed_id/birds", to: "birds#destroy"#
 
   # Snacks
-  get "/snacks", to: "snacks#index", as: "snacks"
-  get "/snacks/:id", to: "snacks#show", as: "snack"
+  get "/snacks", to: "snacks#index", as: "snacks"#
+  get "/snacks/:id", to: "snacks#show", as: "snack"#
 
   # Cages
-  get "/cages", to: "cages#index", as: "cages"
-  get "/cages/:id", to: "cages#show", as: "cage"
+  get "/cages", to: "cages#index", as: "cages"#
+  get "/cages/:id", to: "cages#show", as: "cage"#
 end
