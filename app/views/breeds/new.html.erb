@@ -1,1 +1,19 @@
 <%= render "/shared/navbar" %>
+<h1>Record a New Bird Breed</h1>
+<%= form_with model: @breed, local: true do |form| %>
+    <p>
+        <%= form.label :name, "Breed Name: " %>
+        <%= form.text_field :name %>
+    </p>
+    <p>
+        <%= form.label :bird_colors, "Naturally Occuring Breed Colors: " %>
+        <%= form.collection_check_boxes(:bird_color_ids, @colors, :id, :name) %>
+    </p>
+    <p>
+        <%= form.label :pic, "Representative Breed Photo (PNG/JPG/JPEG): " %>
+        <%= form.file_field :pic, accept: "image/png,image/jpg,image/jpeg" %>
+    </p>
+    <p>
+        <%= form.submit value: "Record" %>
+    </p>
+<% end %>

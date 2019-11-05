@@ -23,8 +23,8 @@ Rails.application.routes.draw do
   get "/breeds/:breed_id/birds", to: "birds#index", as: "birds"
   post "/breeds/birds", to: "birds#create"
   get "/breeds/:breed_id/birds/:bird_id", to: "birds#show", as: "bird"
-  get "/breeds/:breed_id/birds/:bird_id/edit", to: "birds#edit", as: "edit_bird"#
-  patch "breeds/birds", to: "birds#update"#
+  get "/breeds/:breed_id/birds/:bird_id/edit", to: "birds#edit", as: "edit_bird"
+  patch "breeds/birds", to: "birds#update"
   # (Chuck in a delete confirmation window via the view)
   delete "/breeds/:breed_id/birds", to: "birds#destroy"#
 
