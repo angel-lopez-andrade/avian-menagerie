@@ -16,7 +16,8 @@ Rails.application.routes.draw do
 
   # Forums
   get "/breeds/:breed_id/forum", to: "forums#show", as: "forum"#
-  post "/breeds/:breed_id/forum", to: "forums#new", as: "new_post"#
+  get "/breeds/:breed_id/forum/new", to: "forums#new", as: "new_post"#
+  post "/breeds/:breed_id/forum", to: "forums#create"#
 
   # Birds
   get "/birds/new", to: "birds#new", as: "new_bird"
@@ -25,8 +26,7 @@ Rails.application.routes.draw do
   get "/breeds/:breed_id/birds/:bird_id", to: "birds#show", as: "bird"
   get "/breeds/:breed_id/birds/:bird_id/edit", to: "birds#edit", as: "edit_bird"
   patch "breeds/birds", to: "birds#update"
-  # (Chuck in a delete confirmation window via the view)
-  delete "/breeds/:breed_id/birds", to: "birds#destroy"#
+  delete "/breeds/:breed_id/birds", to: "birds#destroy"
 
   # Snacks
   get "/snacks", to: "snacks#index", as: "snacks"

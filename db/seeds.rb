@@ -1,6 +1,3 @@
-# Note - array-counting from 0 but postgresql id initialization from 1
-# Note - :references columns mandatory
-
 # BirdColor - All possible colors that a bird species can be - Cannot be edited by users
 colors = ["Brown", "Grey", "Red", "Black", "White", "Blue", "Orange", "Green", "Yellow", "Purple"]
 bird_color_ids = []
@@ -52,8 +49,8 @@ if BirdColorsBreed.count == 0
     end
 end
 
-# User - Initialize admin user (all seeded Birds belong to admin user - id: 1) (Breeds are not allocated a user, despite being creatable)
-# username field only for admin - all other users have email only
+# User - Initialize admin user and forum posters (all seeded Birds belong to admin user - id: 1) (Breeds are not allocated a user, despite being postable)
+# Username field only for admin - all other users have email only
 # Picture attached
 if User.count == 0
     u = User.create(
@@ -63,7 +60,29 @@ if User.count == 0
     )
     u.pic.attach(io: File.open("app/assets/images/admin_user_icon.png"), filename: "admin_icon.png")
     p "User - Admin"
+    user_ids = []
+    for i in 1..12
+        u = User.create(
+            username: nil,
+            email: "#{Faker::Name.first_name}@gmail.com",
+            password: Faker::Alphanumeric.alpha(number: 8)
+        )
+        user_ids.push(u.id)
+        temp_img_variable = Down.download(Faker::Avatar.image)
+        u.pic.attach(io: temp_img_variable, filename: File.basename(temp_img_variable.path))
+        p "User - #{u.email}"
+    end
 end
+
+# ForumPost - Each by a user and for a breed
+    for i in 1..80
+        ForumPost.create(
+            body: Faker::Lorem.sentence,
+            user_id: user_ids.sample,
+            breed_id: breed_ids.sample
+        )
+        p "ForumPost - For #{Breed.find(ForumPost.last.breed_id).name} by #{User.find(ForumPost.last.user_id).email}"
+    end
 
 # Bird - Individual named birds, each belonging to a breed (however, seeded birds do not belong to any user - thus no user_id declaration)
 # Picture attached

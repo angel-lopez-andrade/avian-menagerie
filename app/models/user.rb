@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
     has_many :birds
     has_one_attached :pic
+    has_many :forum_posts
 end
