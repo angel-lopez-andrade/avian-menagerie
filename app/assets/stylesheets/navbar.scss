@@ -22,7 +22,6 @@
         width: 100%;
         display: flex;
         justify-content: space-around;
-        background: grey;
         height: 150px;
         left: 0;
     }
@@ -30,7 +29,6 @@
     #navbar-main > li {
         display: flex;
         flex-direction: column;
-        border: 1px solid black;
         overflow: hidden;
         justify-content: center;
         text-align: center;
@@ -44,7 +42,9 @@
 
     #icon-image {
         img {
+            border: 1px solid black;
             max-height: 150px; // inherit size of containing box not working...
+            max-width: 100%;
         }
     }
 
@@ -71,7 +71,7 @@
         top: 150px;
         width: 150px;
         height: 1150px;
-        background: grey;
+        background: white;
         left: 0;
         max-height: 75vh;
         ul {
@@ -107,6 +107,17 @@
     #logo {
         flex-grow: 1;
         min-width: 45%;
+    }
+
+    #logout {
+        img {
+            border: 1px solid black;
+            max-height: 150px;
+            width: 100px;
+            margin: 0 auto;
+            // margin-right needs margin to function?
+            margin-right: 0;
+        }
     }
 
     #back-button {
