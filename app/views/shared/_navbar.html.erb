@@ -21,15 +21,16 @@
                 <p><span id="logo-text"><%= link_to("Avian Menagerie", breeds_path) %></span><span>(+ Bird hero image link)</span></p>
             </li>                 
             <li id="logout">
-                <%= image_tag "logout-door.PNG" %>
+                <%= link_to(image_tag("logout-door.PNG"), destroy_user_session_path, method: :delete, data: {confirm: "Logout?"}) %>
             </li>
             <!-- Flex goals
             <li id="cart"></li>
             <li id="search"></li>
             -->
         </ul>
-        <!-- Only goes one page back then goes back to the original page... -->
+        <!-- Only goes one page back then goes back to the original page...
+        Seems unnecessary due to browser built-in back buttons...
         <div id="back-button">
             <p><%= link_to("(Back arrow)", :back) %></p>
-        </div>
+        </div> -->
 </section>
