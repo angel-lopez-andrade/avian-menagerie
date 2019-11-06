@@ -38,7 +38,14 @@
 
     #icon-menu, #logout {
         max-width: 150px;
+        min-width: fit-content;
         flex-grow: 1;
+    }
+
+    #icon-image {
+        img {
+            max-height: 150px; // inherit size of containing box not working...
+        }
     }
 
     #menu-hidden-checkbox {
@@ -99,6 +106,7 @@
 
     #logo {
         flex-grow: 1;
+        min-width: 45%;
     }
 
     #back-button {

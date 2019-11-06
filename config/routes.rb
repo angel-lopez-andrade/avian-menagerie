@@ -35,4 +35,7 @@ Rails.application.routes.draw do
   # Cages
   get "/cages", to: "cages#index", as: "cages"
   get "/cages/:id", to: "cages#show", as: "cage"
+
+  # Ultrahook
+  post "/payments/webhook", to: "payments#webhook"
 end

@@ -1,7 +1,11 @@
 <section id="navbar">
         <ul id="navbar-main">
             <li id="icon-menu">
-                <p>(User icon that pops out into a menu)</p>
+                <% if current_user.pic.attached? %>
+                <p id="icon-image"><%= image_tag current_user.pic %></p>
+                <% else %>
+                    <p id="icon-image"><%= image_tag User.find(1).pic %></p>
+                <% end %>
                 <input type="checkbox" id="menu-hidden-checkbox">
                 <div id="menu-body">
                     <ul>

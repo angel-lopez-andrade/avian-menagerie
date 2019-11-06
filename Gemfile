@@ -76,3 +76,5 @@ gem "down", "~> 5.0"
 gem "normalize-rails", "~> 4.1"
 
 gem "stripe", "~> 5.7"
+
+gem "ultrahook", "~> 0.1.5"
