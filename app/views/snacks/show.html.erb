@@ -2,6 +2,21 @@
 <p><%= image_tag @snack.pic if @snack.pic.attached? %></p>
 <ul>
     <li><%= @snack.name %></li>
-    <li>Buy: <%= @price %></li>
+    <button data-stripe="payment">Purchase: <%= number_to_currency(@snack.price / 100.00) %></button>
 </ul>
 <p><%= @snack.description %></p>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+  document
+    .querySelector("[data-stripe='payment']")
+    .addEventListener("click", () => {
+      const stripe = Stripe(
+        "<%= Rails.application.credentials.dig(:stripe, :public_key) %>"
+      );
+
+      stripe.redirectToCheckout({
+        sessionId: "<%= @session_id %>"
+      });
+    });
+</script>
