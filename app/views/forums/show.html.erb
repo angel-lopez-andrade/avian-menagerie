@@ -1,2 +1,9 @@
 <%= render "/shared/navbar" %>
-<h1><%= image_tag @users.find(12).pic %></h1>
+<h1><%= Breed.find(params[:breed_id]).name %> - Discussion Forum</h1>
+<h1><%= link_to("New Post", new_post_path) %></h1>
+<% for post in ForumPost.where(breed_id: params[:breed_id]) %>
+    <div>
+        <%= image_tag User.find(post.user_id).pic %>
+        <%= post.body %>
+    </div>
+<% end %>
