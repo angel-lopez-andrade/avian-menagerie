@@ -1,18 +1,19 @@
 <%= render "/shared/navbar" %>
 <h1>Add a new Bird Listing</h1>
+<p>Fields with an asterisk are required.</p>
 <%= form_with model: @bird, url: "/breeds/birds", method: :post, local: true do |form| %>
     <p>
-        <%= form.label :name, "Name: " %>
+        <%= form.label :name, "Name* : " %>
         <%= form.text_field :name %>
     </p>
 
     <p>
-        <%= form.label :breed_id, "Breed: " %>
+        <%= form.label :breed_id, "Breed* : " %>
         <%= form.select :breed_id, @breeds.collect {|breed| [ breed.name, breed.id ] } %>
     </p>
 
     <p>
-        <%= form.label :age, "Age: " %>
+        <%= form.label :age, "Age* : " %>
         <%= form.number_field :age, min: 1, max: 15 %>
     </p>
 
@@ -22,7 +23,7 @@
     </p>
 
     <p>
-        <%= form.label :price, "Price: " %>
+        <%= form.label :price, "Price* : " %>
         <%= form.number_field :price, min: 50, max: 1000, placeholder: "$" %>
     </p>
     

@@ -1,6 +1,14 @@
 <%= render "/shared/navbar" %>
 <h1>New Post</h1>
 <%= form_with model: @forum_post, url: "/breeds/#{params[:breed_id]}/forum", local: true do |form| %>
+    <% if @forum_post.errors.any? %>
+        <% @forum_post.errors.full_messages.each do |message| %>
+            <p><%= message %></p>
+        <% end %>
+    <% end %>
+
+
+
     <p>
         <%= form.label :user_id, "User ID: " %>
         <%= form.text_field :user_id, readonly: true, value: current_user.id %>

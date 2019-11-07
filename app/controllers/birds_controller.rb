@@ -14,7 +14,7 @@ class BirdsController < ApplicationController
     def create
         @bird = Bird.new(setup_whitelisted_params)
         # calling method directly rather than having it be setup before_action
-        @bird.price *= 100
+        @bird.price *= 100 if @bird.price != nil
         # price conversions in create controller
         @bird.user_id = current_user.id
         if @bird.save
