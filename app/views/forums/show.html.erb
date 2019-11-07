@@ -3,7 +3,11 @@
 <h1><%= link_to("New Post", new_post_path) %></h1>
 <% for post in ForumPost.where(breed_id: params[:breed_id]) %>
     <div>
-        <%= image_tag User.find(post.user_id).pic %>
-        <%= post.body %>
+        <% if User.find(post.user_id).pic.attached? %>
+            <p><%= image_tag User.find(post.user_id).pic %></p>
+        <% else %>
+            <p><%= image_tag User.find(1).pic %></p>
+        <% end %>
+        <p><%= User.find(post.user_id).email %>: <%= post.body %></p>
     </div>
 <% end %>

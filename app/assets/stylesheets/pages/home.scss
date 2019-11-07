@@ -1,0 +1,18 @@
+#home {
+    background-image: url(image-path("home-peacock.jpg"));
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    max-width: 100vw;
+    #home-textbox {
+        padding: 30px;
+        font-size: 2rem;
+        background: rgba(255, 255, 255, 50%);
+        border-radius: 40%;
+        margin: 0 auto;
+        position: absolute;
+        font-weight: bold;
+        top: 50vh;
+        left: 45vw;
+    }
+}
