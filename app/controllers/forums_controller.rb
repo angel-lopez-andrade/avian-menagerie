@@ -10,16 +10,13 @@ class ForumsController < ApplicationController
 
     def create
         @forum_post = ForumPost.new(setup_whitelisted_params)
-        # if @forum_post.errors.any?
-            p "********************** #{@forum_post.errors.full_messages}"
-        #     render "new"
-        # end
         if @forum_post.save
             redirect_to action: :show
         else
-            p "******************** Reloading post creation page"
-            p "********************** #{@forum_post.errors.full_messages}"
             render :new
+            # use render instead of redirect_to in order to keep the existing @forum_post instance
+            # with its error messages from having passed through the model in its failed .save
+            # , instead of recalling the new method and refreshing forum_post as ForumPost.new
         end
     end
 

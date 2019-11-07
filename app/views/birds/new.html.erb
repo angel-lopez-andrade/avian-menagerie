@@ -2,6 +2,9 @@
 <h1>Add a new Bird Listing</h1>
 <p>Fields with an asterisk are required.</p>
 <%= form_with model: @bird, url: "/breeds/birds", method: :post, local: true do |form| %>
+    <% for error in params[:errors] %>
+        <p><%= error %></p>
+    <% end %>
     <p>
         <%= form.label :name, "Name* : " %>
         <%= form.text_field :name %>
@@ -9,7 +12,7 @@
 
     <p>
         <%= form.label :breed_id, "Breed* : " %>
-        <%= form.select :breed_id, @breeds.collect {|breed| [ breed.name, breed.id ] } %>
+        <%= form.select :breed_id, @breeds.collect {|breed| [ breed.name, breed.id ] }, include_blank: true %>
     </p>
 
     <p>
