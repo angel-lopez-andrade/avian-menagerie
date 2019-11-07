@@ -10,11 +10,13 @@ class ForumsController < ApplicationController
 
     def create
         @forum_post = ForumPost.new(setup_whitelisted_params)
+        p "Creating forum post: User ID: #{@forum_post.user_id}, Breed: #{@forum_post.breed_id}"
         if @forum_post.save
             redirect_to forum_path(params[:breed_id])
         else
             @forum_post = ForumPost.new
             redirect_to new_post_path
+            # flash.alert = "A"
         end
     end
 

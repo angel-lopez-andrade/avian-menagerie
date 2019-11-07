@@ -2,12 +2,12 @@
 <h1>New Post</h1>
 <%= form_with model: @forum_post, url: "/breeds/#{params[:breed_id]}/forum", local: true do |form| %>
     <p>
-        <%= form.label :user_id, "Username: " %>
-        <%= form.text_field :user_id, readonly: true, value: current_user.email %>
+        <%= form.label :user_id, "User ID: " %>
+        <%= form.text_field :user_id, readonly: true, value: current_user.id %>
     </p>
     <p>
-        <%= form.label :breed_id, "Breed: " %>
-        <%= form.text_field :breed_id, readonly: true, value: Breed.find(params[:breed_id]).name %>
+        <%= form.label :breed_id, "Breed ID: " %>
+        <%= form.text_field :breed_id, readonly: true, value: Breed.find(params[:breed_id]).id %>
     </p>
     <p><%= form.label :body, "Type post then click Submit button to post: " %></p>
     <div><%= form.text_area :body, rows: 12, cols: 40 %></div>
