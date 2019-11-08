@@ -20,17 +20,10 @@ class BirdsController < ApplicationController
         if @bird.save
             redirect_to bird_path(@bird.breed_id, @bird.id)
         else
-            p "#*******************@bird.errors.full_messages"
             @breeds = Breed.all
             @bird_colors = BirdColor.all
-            # render :new
-            redirect_to action: :new, errors: @bird.errors.full_messages
-            # seems to go to the url declared in form_with in the view...
-            # redirect_to action: :new
-            # redirect_to works on same path but lose existing instance variable passed through model and saved with errors
-            # WRONG PATHING
+            redirect_to action: :new
         end
-        # non-GET methods need manual redirection
     end
 
     def show

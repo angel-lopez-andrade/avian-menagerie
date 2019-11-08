@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   post "/breeds/birds", to: "birds#create"
   get "/breeds/:breed_id/birds/:bird_id", to: "birds#show", as: "bird"
   get "/breeds/:breed_id/birds/:bird_id/edit", to: "birds#edit", as: "edit_bird"
-  patch "breeds/birds", to: "birds#update"
+  patch "/breeds/birds", to: "birds#update"
   delete "/breeds/:breed_id/birds", to: "birds#destroy"
 
   # Snacks
@@ -36,6 +36,6 @@ Rails.application.routes.draw do
   get "/cages", to: "cages#index", as: "cages"
   get "/cages/:id", to: "cages#show", as: "cage"
 
-  # Ultrahook
+  # Stripe Webhooks (Ultrahook Domain / Heroku Domain)
   post "/payments/webhook", to: "payments#webhook"
 end

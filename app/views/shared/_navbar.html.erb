@@ -4,7 +4,7 @@
                 <% if current_user.pic.attached? %>
                 <p id="icon-image"><%= image_tag current_user.pic %></p>
                 <% else %>
-                    <p id="icon-image"><%= image_tag User.find(1).pic %></p>
+                    <p id="icon-image"><%= image_tag "admin_user_icon.png" %></p>
                 <% end %>
                 <input type="checkbox" id="menu-hidden-checkbox">
                 <div id="menu-body">
@@ -21,7 +21,7 @@
                 <p><span id="logo-text"><%= link_to("Avian Menagerie", breeds_path) %></span><span>(+ Bird hero image link)</span></p>
             </li>                 
             <li id="logout">
-                <%= link_to(image_tag("logout-door.PNG"), destroy_user_session_path, method: :delete, data: {confirm: "Logout?"}) %>
+                <%= link_to(image_tag("logout_door.PNG"), destroy_user_session_path, method: :delete, data: {confirm: "Logout?"}) %>
             </li>
             <!-- Flex goals
             <li id="cart"></li>
