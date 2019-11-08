@@ -1,5 +1,4 @@
 class PagesController < ApplicationController
-    before_action :authenticate_user!
     before_action :setup_home_link, only: :home
     def home
     end
