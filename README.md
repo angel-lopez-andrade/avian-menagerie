@@ -25,22 +25,23 @@ Application functions include;
 - Discuss Bird Species with others
 
 ### Sitemap
-![Sitemap](./docs/sitemap.png)
+![Sitemap](./docs/sitemap.PNG)
 
 ### Screenshots
-![Screenshot1](./docs/screenshot1.png)
-![Screenshot2](./docs/screenshot2.png)
-![Screenshot3](./docs/screenshot3.png)
-![Screenshot4](./docs/screenshot4.png)
+![Screenshot1](./docs/screenshot1.PNG)
+![Screenshot2](./docs/screenshot2.PNG)
+![Screenshot3](./docs/screenshot3.PNG)
+![Screenshot4](./docs/screenshot4.PNG)
 
 ### Wireframes
-![Wireframes1](./docs/wireframes1.png)
-![Wireframes2](./docs/wireframes2.png)
-![Wireframes3](./docs/wireframes3.png)
-![Wireframes4](./docs/wireframes4.png)
+![Wireframes1](./docs/wireframes1.PNG)
+![Wireframes2](./docs/wireframes2.PNG)
+![Wireframes3](./docs/wireframes3.PNG)
+![Wireframes4](./docs/wireframes4.PNG)
 
 ### ERD
-![ERD](./docs/erd1.png)
+![ERD1](./docs/erd1.PNG)
+![ERD2](./docs/erd2.PNG)
 
 ### High-level components
 This application uses the Model-View-Controller (MVC) architecture pattern. The model for each data variety is synced up with an equivalent table in the PostgreSQL database, and declares relations with other models, following the ERD, as well as containing a bit of editing control in checking for the presence of certain fields when it is called by the controller in order to create a new record. The views for each data variety are made in order to cover as much CRUD resource functionality as deemed necessary by the applications designated scope. They present a visual HTML/CSS structure with input from the database via embedded Ruby that add varying data to each different page, dependent upon parameters passed to it by the controller. The controller links the model and the view - retrieving specified data from the database via the model, and then manipulating that data in order to make it easier to process before passing it onto the view, via instance variables and the params array (populated by HTTP request body's/URL query parameters), for display to the user.
@@ -59,7 +60,7 @@ Database relations within this application are also built upon the ERD. Each Rai
 
 ### Task allocation and tracking
 The development of this application and task allocation/goal setting etc. was done via Trello.
-![Trello](./docs/trello.png)
+![Trello](./docs/trello.PNG)
 
 ### Tech Stack
 The tech stack used in this application comprises HTML, CSS, PostgreSQL, Ruby on Rails, Heroku and Stripe.
