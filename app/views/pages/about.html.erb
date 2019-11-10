@@ -1,5 +1,24 @@
 <%= render "/shared/navbar" %>
-<div>
-    <h1>Avian Menagerie - About Us</h1>
-    <p>Slogan/Brief</p>
-</div>
+<section id="about">
+    <div id="logo-slogan" class="text">
+        <h1>Avian Menagerie - About Us</h1>
+        <% 3.times do %>
+            <p><%= Faker::Lorem.paragraph %></p>
+        <% end %>
+    </div>
+    <div id="various-contents">
+        <div id="image">
+            <%= image_tag "about_main.jpg" %>
+        </div>
+        <div id="side-info" class="text">
+            <% 8.times do %>
+                <p><%= Faker::Lorem.paragraph %></p>
+            <% end %>
+        </div>
+        <div id="bottom-info" class="text">
+            <% 5.times do %>
+                <p><%= Faker::Lorem.paragraph %></p>
+            <% end %>
+        </div>
+    </div>
+</section>

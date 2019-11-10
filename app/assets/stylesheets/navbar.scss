@@ -109,7 +109,22 @@
 
     #logo {
         flex-grow: 1;
-        min-width: 45%;
+        background-image: url(image-path("navbar_banner.jpeg"));
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        span a {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            padding: 20px 40px;
+            position: relative;
+            font-family: sans-serif;
+            font-size: 2.4rem;
+            font-weight: bold;
+            color: rgb(0, 0, 0);
+            -webkit-text-stroke: 0.4px rgb(255, 136, 0);
+            box-shadow: 5px 10px 5px 2px rgba(123, 0, 224, 0.45);
+        }
     }
 
     #logout {
@@ -117,7 +132,7 @@
             border: 1px solid black;
             border-bottom: none;
             max-height: 160px;
-            width: 100px;
+            width: 150px;
             float: right;
         }
     }

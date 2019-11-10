@@ -2,7 +2,7 @@
         <ul id="navbar-main">
             <li id="icon-menu">
                 <% if current_user.pic.attached? %>
-                <p id="icon-image"><%= image_tag current_user.pic %></p>
+                    <p id="icon-image"><%= image_tag current_user.pic %></p>
                 <% else %>
                     <p id="icon-image"><%= image_tag "admin_user_icon.png" %></p>
                 <% end %>
@@ -18,7 +18,7 @@
                 </div>
             </li>
             <li id="logo">
-                <p><span id="logo-text"><%= link_to("Avian Menagerie", breeds_path) %></span><span>(+ Bird hero image link)</span></p>
+                <p><span><%= link_to("Avian Menagerie", breeds_path) %></span></p>
             </li>                 
             <li id="logout">
                 <%= link_to(image_tag("logout_door.PNG"), destroy_user_session_path, method: :delete, data: {confirm: "Logout?"}) %>

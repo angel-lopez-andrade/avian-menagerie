@@ -56,7 +56,7 @@ Model relations within this application are built upon the ERD. Models that belo
 Database relations within this application are also built upon the ERD. Each Rails model has an equivalent PostgreSQL table, which holds the automated 'id' of each record, as well as information about the values and data-types of each column within each of those records. Unlike the model side of things, "belonger" tables do not have an explicitly declared relationship to their "belongee" tables, but are merely connected via the foreign key pointing towards themselves contained in the latter. These foreign keys declare the id of the belonger record/s that each belongee record is associated with.
 
 ### Database schema design
-
+See ERD
 
 ### Task allocation and tracking
 The development of this application and task allocation/goal setting etc. was done via Trello.

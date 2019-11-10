@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   get "/cages", to: "cages#index", as: "cages"
   get "/cages/:id", to: "cages#show", as: "cage"
 
-  # Stripe Webhooks (Ultrahook Domain / Heroku Domain)
+  # Stripe Success + Webhooks (Ultrahook Domain + Heroku Domain)
+  get "/payments/success", to: "payments#success", as: "payment_success"
   post "/payments/webhook", to: "payments#webhook"
 end

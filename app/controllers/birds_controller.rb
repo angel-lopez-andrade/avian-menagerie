@@ -27,16 +27,19 @@ class BirdsController < ApplicationController
     end
 
     def show
+        if @bird.description and @bird.description != ""
+            @description = @bird.description
+        else
+            @description = "No description has been left for this bird."
+        end
         session = Stripe::Checkout::Session.create({
-            # cancel_url: bird_path(params[:breed_id], params[:bird_id]),
             cancel_url: "#{root_url}breeds/#{params[:breed_id]}/birds/#{params[:bird_id]}",
-            # success_url: breeds_path
-            success_url: "#{root_url}breeds", # must create successful purchase page
+            success_url: "#{root_url}payments/success", # must create successful purchase page
             payment_method_types: ["card"],
             customer_email: current_user.email,
             line_items: [{
                 name: @bird.name,
-                description: @bird.description,
+                description: @description,
                 amount: @bird.price, #comes out as what unit? stripe takes cents?
                 currency: "aud",
                 quantity: 1

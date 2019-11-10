@@ -9,7 +9,7 @@ class CagesController < ApplicationController
         @price = "$#{Cage.find(params[:id]).price / 100.00}"
         session = Stripe::Checkout::Session.create({
             cancel_url: "#{root_url}cages/#{params[:id]}",
-            success_url: "#{root_url}cages",
+            success_url: "#{root_url}payments/success",
             payment_method_types: ["card"],
             customer_email: current_user.email,
             line_items: [{
