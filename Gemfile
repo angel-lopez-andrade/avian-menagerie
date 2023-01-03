@@ -69,7 +69,7 @@ gem "aws-sdk-s3", "~> 1.52"
 
 gem "devise", "~> 4.7"
 
-gem "httparty", "~> 0.17.1"
+gem "httparty", "~> 0.21.0"
 
 gem "down", "~> 5.0"
 
